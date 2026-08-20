@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create the private repo under the sincefirst org and push to it.
+# Create the repo under the sincefirst org and push to it. PUBLIC -- see below.
 #
 # The token is never typed on a command line, never put in a remote URL that git
 # would write into .git/config, and never printed. It is read from a file and
