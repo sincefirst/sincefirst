@@ -55,15 +55,26 @@ else
   echo "token expires $TOKEN_EXPIRES"
 fi
 
-# Create the repo if it is not there yet. PRIVATE, always: every app in this
-# portfolio is private, and Etsy reviews the running app rather than the source.
+# Create the repo. PUBLIC for a Personal app, and that is not a slip.
+#
+# The playbook line "repo private, Website URL = the live app" is the COMMERCIAL
+# rule: those have a domain to point at. A Personal app here is a command-line
+# tool with no site, so the Website URL on the Etsy form IS this repo -- and a
+# private one hands the reviewer a 404.
+#
+# Measured 2026-08-20: all eight Personal apps approved the day before are
+# public (brackenway/collectr, kilnrow/palette, coldbeck/howlong,
+# pennyfold/postedfrom, fenwarrow/newdrop, thistlegate/giftlist,
+# crookmill/price-ranges, quillbarrow/justthis), as are pigeon, thicket and
+# mochi. The only private ones in the set -- filedunder, sidenote, onceover --
+# are all REJECTED apps, made private after the fact.
 code=$(curl -sS -o /dev/null -w "%{http_code}" \
        -H "Authorization: Bearer $TOKEN" "https://api.github.com/repos/$ORG/$REPO")
 if [ "$code" = "404" ]; then
   curl -sS -X POST -H "Authorization: Bearer $TOKEN" \
     -H "Accept: application/vnd.github+json" \
     "https://api.github.com/orgs/$ORG/repos" \
-    -d "{\"name\":\"$REPO\",\"private\":true,\"has_issues\":true,\"has_wiki\":false,\"auto_init\":false}" \
+    -d "{\"name\":\"$REPO\",\"private\":false,\"has_issues\":true,\"has_wiki\":false,\"auto_init\":false}" \
     | python -c "import sys,json; d=json.load(sys.stdin); print('created', d.get('full_name'), 'private=' + str(d.get('private')))"
 elif [ "$code" = "200" ]; then
   echo "repo already exists, pushing to it"
@@ -96,4 +107,4 @@ git -c credential.helper= -c credential.helper='!f() { [ "$1" = get ] || exit 0;
     push -u origin HEAD:main
 
 echo
-echo "pushed. https://github.com/$ORG/$REPO  (private)"
+echo "pushed. https://github.com/$ORG/$REPO  (public -- it is the Website URL on the Etsy form)"
