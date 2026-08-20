@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Help &mdash; sincefirst</title><link rel="stylesheet" href="style.css"></head><body><main>
+<h1>Help</h1>
+<p class="sub">How to run it, and what the odd answers mean.</p>
+
+<h2>Running it</h2>
+<p>Python 3.8 or newer. No dependencies to install.</p>
+<pre>python sincefirst.py                          the demo
+python sincefirst.py find "linocut print"     a search, ranked by rate
+python sincefirst.py look 982854797           one or more listing IDs</pre>
+<p>Set <code>ETSY_API_KEY</code> to <code>keystring:shared_secret</code> for live data &mdash;
+<strong>both halves</strong>; the keystring on its own is a 403 that looks like a wrong key.
+With no key the program prints a fixed demo and says so at the top.</p>
+
+<h2>&ldquo;Listed too recently for a rate to mean anything yet&rdquo;</h2>
+<p>The item went up less than a fortnight ago. One view on day two is not half a view a day, it
+is noise. Between a fifth and a half of a search is usually this new.</p>
+
+<h2>&ldquo;No views at all&rdquo;</h2>
+<p>Etsy returned a view count of zero for something that has been listed long enough to have
+collected some. It is not an error and it is not a bug in the listing; about a third of every
+search looks like this.</p>
+
+<h2>&ldquo;Etsy gave no view count or no first-listed date&rdquo;</h2>
+<p>One of the two numbers the rate is made from was missing. Rather than substitute a guess, the
+listing is shown with everything that <em>was</em> given and no rate.</p>
+
+<h2>Why the bars look compressed</h2>
+<p>They are on a log scale, which is printed above them. A listing at 100 views a day does not
+get a bar ten times longer than one at 10 &mdash; the alternative is that everything below the
+busiest item in the list becomes invisible.</p>
+
+<h2>Getting in touch</h2>
+<p>Open an issue on the repository.</p>
+<nav><a href="what.html">What it does</a><a href="kept.html">What is kept</a><a href="terms.html">Terms</a><a href="help.html">Help</a></nav>
+<footer>The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</footer>
+</main></body></html>

@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What it does &mdash; sincefirst</title><link rel="stylesheet" href="style.css"></head><body><main>
+<h1>What sincefirst does</h1>
+<p class="sub">A view count you can actually read.</p>
+
+<p>sincefirst is a command-line program I run on my own computer. I give it a search or a
+handful of listing IDs, and it prints how many people have looked at each one <em>per day
+since the seller first listed it</em> &mdash; rather than the lifetime total Etsy shows, which
+has no time attached to it.</p>
+
+<h2>The thing it exists to get right</h2>
+
+<p>Etsy publishes a <code>views</code> figure on every search result. It is the one number on a
+listing that looks like evidence of interest, and on its own it cannot be read. Here are two
+listings that came back side by side in one measured search:</p>
+
+<table>
+  <tr><th></th><th>views</th><th>listed for</th><th>a day</th></tr>
+  <tr><td>a pottery template bundle</td><td>335</td><td>16 days</td><td><b>20.9</b></td></tr>
+  <tr><td>an enamel pin</td><td>341</td><td>2,554 days</td><td><b>0.13</b></td></tr>
+</table>
+
+<p>Six views apart. A hundred and sixty-four times apart in what they mean. The same search
+again on rings turned up 24,287 views collected over twelve years sitting next to 23,815
+collected over nine months.</p>
+
+<p>Etsy prints the left-hand column and never the right-hand one. So this program never shows a
+view count without the age beside it, and sorts on the rate.</p>
+
+<h2>Three more things it is careful about</h2>
+
+<p><strong>The age is when the seller first listed the item, not Etsy&rsquo;s renewal date.</strong>
+Every one of the most-viewed listings in every search measured had been renewed <em>that day</em>.
+Dividing by the renewal date would give a rate of infinity for everything, every morning.</p>
+
+<p><strong>Zero views is two different facts.</strong> About a third of every search comes back
+with no views at all &mdash; 34, 38 and 39 out of 100 in the searches measured. Zero on
+something listed this morning says nothing; nobody has had the chance. Zero on something listed
+four years ago is the loudest number on the page. Anything under a fortnight old is shown
+without a rate at all, and between a fifth and a half of a search is usually that new.</p>
+
+<p><strong>The bars are logarithmic, and it says so.</strong> The rates measured run from 0.00 to
+857 a day &mdash; more than five orders of magnitude. Drawn to a linear scale, everything except
+the single busiest listing would be a bar of no width, which would read as &ldquo;nobody looks
+at any of these&rdquo;. The axis is printed above the bars so the scale is not a secret.</p>
+
+<h2>What it will not tell you</h2>
+
+<p>Whether to buy anything. A busy listing is not a better one and an unseen listing is not a
+worse one &mdash; plenty of the quietest things measured were one-off vintage pieces, which is
+why people come to Etsy in the first place. It prints the number and the age and stops. There is
+a test that fails the build if a word like &ldquo;trending&rdquo; or &ldquo;hidden gem&rdquo; ever
+reaches the screen.</p>
+<nav><a href="what.html">What it does</a><a href="kept.html">What is kept</a><a href="terms.html">Terms</a><a href="help.html">Help</a></nav>
+<footer>The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</footer>
+</main></body></html>

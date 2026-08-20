@@ -1,0 +1,118 @@
+/* sincefirst.
+   Deliberately not the house look. The other pages in this portfolio are warm
+   serif on ivory with a teal link; this one is a plain grotesque on paper-white
+   with a rule-heavy, tabular feel, because the whole subject is a number and an
+   axis. Copying a stylesheet between apps is the fingerprint that gives a set of
+   "independent" apps away. */
+
+:root {
+  --ink: #16181a;
+  --dim: #62676b;
+  --rule: #d7dade;
+  --bg: #fcfcfb;
+  --accent: #8a4b1f;
+  --tint: #f1f2f3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 3.5rem 1.25rem 4rem;
+  font: 16px/1.6 "Helvetica Neue", Arial, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main { max-width: 40rem; margin: 0 auto; }
+
+h1 {
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 .25rem;
+}
+
+h2 {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 2.6rem 0 .6rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sub { color: var(--dim); margin: 0 0 2.2rem; font-size: 1.02rem; }
+
+p, li { margin: .8rem 0; }
+
+em { font-style: italic; }
+
+code {
+  font: 0.88em ui-monospace, "SF Mono", Consolas, monospace;
+  background: var(--tint);
+  padding: .12em .35em;
+}
+
+pre {
+  font: 0.85rem/1.7 ui-monospace, "SF Mono", Consolas, monospace;
+  background: var(--tint);
+  border-left: 3px solid var(--rule);
+  padding: .9rem 1rem;
+  overflow-x: auto;
+  margin: 1.1rem 0;
+}
+
+/* The one table in the set. The comparison it holds -- 335 views over 16 days
+   beside 341 over 2,554 -- is the whole argument for the program, so it is not
+   left to the browser default. */
+table {
+  border-collapse: collapse;
+  margin: 1.3rem 0;
+  font-size: .94rem;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: .42rem .9rem .42rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+th {
+  font-weight: 700;
+  font-size: .7rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* The two rate figures are the point of the table; line them up. */
+td:last-child, th:last-child { text-align: right; }
+td b { font-variant-numeric: tabular-nums; font-weight: 650; }
+
+nav {
+  margin: 3rem 0 0;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+  font-size: .9rem;
+}
+
+nav a {
+  color: var(--accent);
+  margin-right: 1.4rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+nav a:hover { border-bottom-color: var(--accent); }
+
+footer {
+  margin-top: 1.4rem;
+  color: var(--dim);
+  font-size: .78rem;
+  line-height: 1.55;
+}
